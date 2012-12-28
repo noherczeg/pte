@@ -177,7 +177,7 @@ opcionálisan:
 + `cat /proc/cpuinfo` -> kiolvas
 
 ##### [+] Hány csomag van felinstallálva?
-+ `dpkg -l | wc -l`
++ `dpkg --get-selections | wc -l`
 
 ##### [?] A "guest455" felhasználó speciálisan lett létrehozva, a többi "guest" felhasználóhoz képet több beállítása is más. Állítsa be a "guest456" felhasználót hasonló módon!
 + `/etc/passwd, /etc/shadow, /etc/group` : ezekben kell tevékenykedni
