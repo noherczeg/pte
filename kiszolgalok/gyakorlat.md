@@ -52,7 +52,7 @@
 `tar cvzf etc.tgz /etc`
 
 ##### [+] Mi az alap(default) futási szint a rendszeren?
-`cat /etc/inittab | grep id: | cut -f2 -d :`
+`cat /etc/inittab | grep id: | cut -f 2 -d :`
 
 ##### [+] Mi az aktuális futási szint a rendszeren?
 `who -r`
@@ -213,7 +213,7 @@ opcionálisan:
 _telepíteni a sudo-t, majd beállítani a sudoers-t:_
 
 + `apt-get install sudo`
-+ `visudo` -> `ALL     ALL=(ALL)   ALL`
++ `visudo` -> beír "ALL     ALL=(ALL)   ALL"
 
 _teszt:_
 
@@ -287,7 +287,7 @@ iptables -P INPUT DROP
 `apt-cache depends rxvt`
 
 ##### [+] Mekkora a bootolható partíció mérete?
-`df `fdisk -l | awk '{if ($2 == "*") print $1;}'` | grep -n 2 | awk '{print $2;}'`
+`df &#x60;fdisk -l | awk '{if ($2 == "*") print $1;}'&#x60; | grep -n 2 | awk '{print $2;}'`
 
 ##### [+] A virtuális gép által látott processzor hány MHz-es?
 `cat /proc/cpuinfo | grep MHz`
