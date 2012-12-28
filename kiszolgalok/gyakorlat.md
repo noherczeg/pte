@@ -287,7 +287,9 @@ iptables -P INPUT DROP
 `apt-cache depends rxvt`
 
 ##### [+] Mekkora a bootolható partíció mérete?
-`df ``fdisk -l | awk '{if ($2 == "*") print $1;}'`` | grep -n 2 | awk '{print $2;}'`
+```
+df `fdisk -l | awk '{if ($2 == "*") print $1;}'` | grep -n 2 | awk '{print $2;}'
+```
 
 ##### [+] A virtuális gép által látott processzor hány MHz-es?
 `cat /proc/cpuinfo | grep MHz`
