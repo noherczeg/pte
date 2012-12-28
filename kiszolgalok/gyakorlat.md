@@ -277,7 +277,7 @@ iptables -P INPUT DROP
 
 ##### [+] Állítsuk be, hogy a 4. futási szinten csak 2db virtuális terminál induljon!
 + `vi /etc/inittab`
-+ ahol volt 4-es bejegyzés, onnan a 4-est kivenni, majd:
++ ahol volt 4-es bejegyzés, onnan a 4-es sort kivenni, majd:
 ```
 [n+1]:4:respawn:/sbin/mingetty tty[n+1]
 [n+2]:4:respawn:/sbin/mingetty tty[n+2]
