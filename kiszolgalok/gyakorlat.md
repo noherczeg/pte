@@ -173,7 +173,7 @@ opcionálisan:
 + `apt-get install dosftools`
 + `man dosftools` :D
 
-##### [+] Milyen processzort lát  virtuális gép?
+##### [+] Milyen processzort lát a virtuális gép?
 + `cat /proc/cpuinfo` -> kiolvas
 
 ##### [+] Hány csomag van felinstallálva?
@@ -255,7 +255,7 @@ iptables -P INPUT DROP
 ```
 
 ##### [-] Hány darab dinamikus könyvtárat használ a DNS server?
-`ldd /etc/bind/namedconf | wc -l` -> KB NEM EZ KELL
+`ldd /etc/bind/named.conf | wc -l` -> KB NEM EZ KELL
 
 ##### [+] Állítsa be, hogy a lokális DNS servert is használja a rendszer!
 `vi /etc/resolv.conf` -> `nameserver [lokális ip]`
