@@ -177,7 +177,7 @@ opcionálisan:
 + `cat /proc/cpuinfo` -> kiolvas
 
 ##### [+] Hány csomag van felinstallálva?
-+ `dpkg - | wc -l`
++ `dpkg -l | wc -l`
 
 ##### [?] A "guest455" felhasználó speciálisan lett létrehozva, a többi "guest" felhasználóhoz képet több beállítása is más. Állítsa be a "guest456" felhasználót hasonló módon!
 + `/etc/passwd, /etc/shadow, /etc/group` : ezekben kell tevékenykedni
@@ -213,7 +213,7 @@ opcionálisan:
 _telepíteni a sudo-t, majd beállítani a sudoers-t:_
 
 + `apt-get install sudo`
-+ `visudo` -> beír "ALL     ALL=(ALL)   ALL"
++ `visudo` -> beír `ALL     ALL=(ALL)   ALL`
 
 _teszt:_
 
