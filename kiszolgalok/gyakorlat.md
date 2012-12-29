@@ -48,9 +48,6 @@
 + `mkdir /etc/alma` -> ha még nem létezett a cél mappa
 + `find . -iname "*alma*" -exec cp {} /etc/alma \;`
 
-##### [?] Csomagolja + tömörítse össze a /etc könyvtárat etc.tgz néven. Töltse le a virtuális ....
-`tar cvzf etc.tgz /etc`
-
 ##### [+] Mi az alap(default) futási szint a rendszeren?
 `cat /etc/inittab | grep id: | cut -f 2 -d :`
 
@@ -297,3 +294,41 @@ df `fdisk -l | awk '{if ($2 == "*") print $1;}'` | grep -n 2 | awk '{print $2;}'
 ##### [+] Mi az inode száma az "/etc/passwd" filenak?
 + `ls -i /etc/passwd`, vagy
 + `stat /etc/passwd | grep Inode`
+
+##### [+] Csomagolja + tömörítse össze a /etc könyvtárat etc.tgz néven. Töltse le a virtuális ....
+_tömörítés:_
++ `cd /root/`
++ `tar cvzf etc.tgz /etc`
+
+_sshd:_
++ `netstat -tulpn | grep ssh` -> ha megy, akkor oké, ha nem, akkor config ellenőrzés, vagy:
++ `apt-get install openssh-server`
+
+_Virtualbox:_
+Host-Only hálózat hozzáadása ha nincs:
+```
+IPv4: 192.168.56.1
+maszk: 255.255.255.0
+```
+DHCP:
+```
+192.168.56.100
+255.255.255.0
+192.168.56.101
+192.168.56.254
+``` 
+Virtuális gép -> hálózat: Host-Only
+
+_Debian:_
++ `dhclient` (`ifconfig -a` ellenőrzés képp)
++ `service ssh restart`
+
+_WinSCP:_
++ ip: `192.168.56.101` (nem biztos, hogy 101 lesz, ifconfig-ban írta mennyi)
++ port: 22
++ user: root
++ pass: amit megadtunk neki
+
+profit :P
+
+Ha nem tudnánk logolni rootként, de kapcsolódni igen, akkor sshd.conf-ban valszeg tiltva van a root login, ezt pedig korrigálni kell.
