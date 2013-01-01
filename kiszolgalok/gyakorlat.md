@@ -166,9 +166,13 @@ opcionálisan:
 + `apache2ctl -M | wc -l` -> számuk
 + `apache2ctl -M` -> lista
 
-##### [-] Installáljuk fel a "dosftools" nevű csomagot, amivel a lemezen levő maradék helyen hozzon létre FAT16 file rendszert! Az fsck.vfat segítségével állapítsuk meg, hogy hány cluster található benne!
-+ `apt-get install dosftools`
-+ `man dosftools` :D
+##### [?] Installáljuk fel a "dosfstools" nevű csomagot, amivel a lemezen levő maradék helyen hozzon létre FAT16 file rendszert! Az fsck.vfat segítségével állapítsuk meg, hogy hány cluster található benne!
+Nincs megadva, hogy új partíció legyen-e létrehozva, vagy pl. file-ba menjen, ezért file-t hozunk létre...
++ `apt-get install dosfstools`
++ `df -k` -> leolvassuk, hogy KB-ban mennyi hely van a lemezen (vonjunk le belőle egy keveset), ez lesz a [meret]
++ `dd if=/dev/zero of=/tmp/fd bs=1024 count=[meret]` -> /tmp/fd lesz a neve
++ `mkfs.msdos -F 16 /tmp/fd`
++ `man fsck.vfat`
 
 ##### [+] Milyen processzort lát a virtuális gép?
 + `cat /proc/cpuinfo` -> kiolvas
