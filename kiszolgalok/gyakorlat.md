@@ -2,29 +2,36 @@
 Interface debug:
 + `ifconfig -a` -> kiolvasni eth[szam]-ot
 + `vi /etc/network/interfaces` -> kijavítani a hibás részeket
+
 ```
 auto eth[szam]
 iface eth[szam] inet dhcp
 ```
+
 + `/etc/init.d/networking restart`
 + `ifup eth[szam]`
 
 DNS debug:
 + `cat /etc/resolv.conf`
+
 ```
 nameserver 84.2.44.1
 nameserver 84.2.46.1
-``` 
+```
+
 + meg kell pingelni a nameservereket, és ha egyik sem megy, akkor:
 + `vi /etc/resolv.conf`
+
 ```
 nameserver 8.8.8.8
-``` 
+```
+
 + `dhclient`
 
 TCP Wrapper:
 A hosts.allow-nak precedenciája van a deny-al szemben, ezért, ha mindent engedni akarunk:
 + `vi /etc/hosts.allow`
+
 ```
 ALL: ALL
 ```
