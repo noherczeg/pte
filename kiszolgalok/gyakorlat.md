@@ -1,43 +1,50 @@
-﻿#### 1) Általános hálózat és repository debug:
+﻿### 1) Általános hálózat és kapcsolódók debugja:
 ##### Interface debug:
-+ `ifconfig -a` -> kiolvasni eth[szam]-ot
-+ `vi /etc/network/interfaces` -> kijavítani a hibás részeket
+A kártya nevének megkeresése, és javítása, ha el lenne rontva:
+`ifconfig -a` -> kiolvasni eth[szam]-ot
+`vi /etc/network/interfaces` -> kijavítani a potenciális hibás részeket
 
 ```
 auto eth[szam]
 iface eth[szam] inet dhcp
 ```
 
-+ `/etc/init.d/networking restart`
-+ `ifup eth[szam]`
+Újraindítás:
+`/etc/init.d/networking restart`
+`ifup eth[szam]`
 
 ##### DNS debug:
-+ `cat /etc/resolv.conf`
+Megnézni, hogy vannak-e definiálva serverek és megpingelni őket:
+`cat /etc/resolv.conf`
 
-```
-nameserver 84.2.44.1
-nameserver 84.2.46.1
-```
-
-+ meg kell pingelni a nameservereket, és ha egyik sem megy, akkor:
-+ `vi /etc/resolv.conf`
+Ha nem találjuk őket, vagy üres a file, akkor:
+`vi /etc/resolv.conf`
 
 ```
 nameserver 8.8.8.8
 ```
 
-+ `dhclient`
+Végén a biztonság kedvéért:
+`dhclient`
 
 ##### TCP Wrapper:
 A hosts.allow-nak precedenciája van a deny-al szemben, ezért, ha mindent engedni akarunk:
-+ `vi /etc/hosts.allow`
+`vi /etc/hosts.allow`
 
 ```
 ALL: ALL
 ```
 
+##### iptables:
+Amennyiben nincs megkötés semelyik feladatban sem arra nézve, hogy ne bántsuk, akkor a legegyszerűbb módszer, ha mindent engedünk :(
+
++ `iptables -P INPUT ACCEPT`
++ `iptables -P FORWARD ACCEPT`
++ `iptables -P OUTPUT ACCEPT`
++ `iptables -F`
+
 ##### Repository debug:
-+ `vi /etc/apt/sources.list`
+`vi /etc/apt/sources.list`
 
 ```
 deb http://ftp.hu.debian.org/debian stable main non-free
@@ -45,9 +52,19 @@ deb http://ftp.debian.org/debian/ squeeze-updates main non-free
 deb http://security.debian.org/ squeeze/updates main non-free
 ```
 
-+ `apt-get update`
+Végén frissíteni a meta adatokat:
+`apt-get update`
 
-#### 2) Példák:
+##### Szolgáltatás debug:
+Ellenőrizni kell, hogy fut-e adott szolgáltatás:
+`netstat -tulpn | grep [nev reszlet]`, ahol [nev reszlet] lehet pl ssh, vagy mysql, stb...
+
+Ha nem, akkor általában:
+`service [nev] start`, vagy `/etc/init.d/[nev] start`
+
+
+
+### 2) Példák:
 
 ##### [+] Virtuális lemez mérete:
 `fdisk –l | grep Disk` -> kiolvas
