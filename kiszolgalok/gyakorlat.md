@@ -1,4 +1,4 @@
-﻿### 1) Általános hálózat és kapcsolódók debugja:
+﻿## 1) Általános hálózat és kapcsolódók debugja:
 ##### Interface debug:
 A kártya nevének megkeresése, és javítása, ha el lenne rontva:
 `ifconfig -a` -> kiolvasni eth[szam]-ot
@@ -66,7 +66,7 @@ Ha nem, akkor általában:
 
 
 
-### 2) Példák:
+## 2) Példák:
 
 ##### [+] Virtuális lemez mérete:
 `fdisk –l | grep Disk` -> kiolvas
