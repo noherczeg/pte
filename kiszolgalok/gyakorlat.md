@@ -109,9 +109,11 @@ Ha nem, akkor általában:
 + `> quit`
 
 + `crontab -e`
+
 ```
 * * 12 * * /usr/bin/mysqldump -u root-p [jelszo] --all-databases --routines | gzip > /home/frissit/dbmentes_`date +'%m-%d-%Y'`.sql.gz
 ```
+
 + `Ctrl + X` -> y
 
 ##### [+] Installáljuk fel az ftpd csomagot, majd állítsuk be, hogy a  "hallgato" felhasználó ne használhassa a szolgáltatást!
@@ -141,7 +143,7 @@ Ha nem, akkor általában:
 
 ##### [+] Állítsa be, hogy minden bootolás során mountolja a rendszer a 3. primary partíciót
 + `fdisk -l` -> kinézni a nevét a 3. primary-nak
-+ mkdir /mnt/harmadik` -> létrehozzuk a fogadó mappát
++ `mkdir /mnt/harmadik` -> létrehozzuk a fogadó mappát
 + `vi /etc/fstab` -> `/dev/[neve]  /mnt/harmadik  auto  defaults  0  0`
 
 ##### [+] Mountolja fel a 3. primary partíciót, csomagolja be tar.gz formátumra a tartalmát, mekkora lesz a csomagolt file?
@@ -151,6 +153,7 @@ Ha nem, akkor általában:
 
 ##### [+] Melyik fileba logolja a local5 facility eseményeit?
 local5 = syslog (syslogd)
+
 `cat /etc/rsyslog.conf | grep syslog` -> kiolvas (végén)
 
 ##### [+] magyarázza el a rendszeren található tűzfal beállításait
@@ -162,17 +165,20 @@ Ha nem megy mi a hiba?
 Hiányolja a `libpcre.so.3`-mat a /lib-ben. Át lett nevezve (?) tehát mondjuk lérehozunk egy soft linket a megfelelő névvel:
 + `cd /lib` -> `ln –s libpcre.so.3.12.1 libpcre.so.3`
 + Újabb próba hátha már megy: Ha még mindig nem, akkor iptables (minden mehet akár acceptre, nem volt megszorítás a feladat szövegében!):
+
 ```
 iptables –P INPUT ACCEPT
 iptables –P FORWARD ACCEPT
 iptables –P OUTPUT ACCEPT
 ```
+
 + Újabb próba: `cd /etc/init.d/` -> `./apache2 start` -> így már mennie kell
 + indítás minden bootkor: `update-rc.d apache2 defaults`
 
 ##### [?] Állítsa be, hogy a weboldalakat a /home/web könyvtárból szolgálja ki! Állítsa be, hogy a /home/web/private könyvtárat csak a 192.168.56.1-ről érhessék el!
 + `vi httpd.conf` -> `DocumentRoot "/home/web"`
 + `vi httpd.conf` -ba a következőt:
+
 ```
 <Directory /home/web/private>
     Order allow,deny
@@ -194,11 +200,11 @@ iptables –P OUTPUT ACCEPT
 + `apt-get install openssh-server`
 + `vi /etc/ssh/sshd_config`
 
-opcionálisan:
-+ kulcs generálás : `ssh-keygen –f ssh_host_rsa_key`
-+ szintén: `ssh-keygen –t dsa –f ssh_host_dsa_key`
+opcionálisan (kulcs generálás):
++ `ssh-keygen –f ssh_host_rsa_key`
++ `ssh-keygen –t dsa –f ssh_host_dsa_key`
 + `vi /etc/hosts.allow` -> `sshd: [lokál ip]`
-+ engedélyezett kulcsok: cp id_rsa.pub authorized_keys
++ engedélyezett kulcsok: `cp id_rsa.pub authorized_keys`
 
 ##### [+] Mi a bootolható partíció kezdő cilinderének száma
 `fdisk -l` -> kiolvasni a "start"-ot a *-ozott sorban
@@ -243,6 +249,7 @@ opcionálisan:
 
 ##### [?] Installáljuk fel a "dosfstools" nevű csomagot, amivel a lemezen levő maradék helyen hozzon létre FAT16 file rendszert! Az fsck.vfat segítségével állapítsuk meg, hogy hány cluster található benne!
 Nincs megadva, hogy új partíció legyen-e létrehozva, vagy pl. file-ba menjen, ezért file-t hozunk létre...
+
 + `apt-get install dosfstools`
 + `df -k` -> leolvassuk, hogy KB-ban mennyi hely van a lemezen (vonjunk le belőle egy keveset), ez lesz a [meret]
 + `dd if=/dev/zero of=/tmp/fd bs=1024 count=[meret]` -> /tmp/fd lesz a neve
@@ -285,12 +292,12 @@ Nincs megadva, hogy új partíció legyen-e létrehozva, vagy pl. file-ba menjen
 
 
 ##### [+] Állítsa be, hogy ne csak a root, hanem az összes felhasználó újraindíthassa a számítógépet!
-_telepíteni a sudo-t, majd beállítani a sudoers-t:_
+Telepíteni a sudo-t, majd beállítani a sudoers-t:
 
 + `apt-get install sudo`
 + `visudo` -> beír `ALL     ALL=(ALL)   ALL`
 
-_teszt:_
+Teszt:
 
 + teszt userrel be kell jelentkezni
 + `sudo reboot`  -> megadjuk a jelszavunk
@@ -301,26 +308,30 @@ _teszt:_
 ##### [?] Határozza meg hány olyan felhasználó van, aki be tud lépni, létezik, de már nem létezik a home könyvtára.
 + `cat /etc/shadow | grep '[:][*|!][:]' -v | cut -f1 -d:` -> userek listája, akik tudnak logolni (negált grep, azokra kiknek a sorában *, vagy ! van :) )
 + `ls /home` -> könyvtárak listája (root nélkül!)
-+ konkluzió leírása (bash script kell az egy lépéséses kiíráshoz)...
+
+konkluzió leírása (bash script kell az egy lépéséses kiíráshoz)...
 
 ##### [+] A linuxon ha CDROM-ot akarunk felcsatolni milyen eszközt csatolnánk fel? Mi a CDROM eszköz neve?
-+ neve: `find /dev -name cdrom`
++ `find /dev -name cdrom` -> nevét kikeresni
 + `mkdir /mnt/cdrom` -> ha kell
 + `mount /dev/cdrom /mnt/cdrom`
 
 ##### [?] Az SSH server nem indul, írja le mi a probléma, oldja meg!
 Itt lehet gebasz:
+
 ```
 /etc/ssh/sshd_config
 ~/.ssh/config: felülírhatja az ssh_configot
 ~/.ssh/authorized-keys: jelszó nélkül hozzáférés
 /etc/hosts.allow -> sshd: [lokál ip]
 ```
+
 Ez sem feltétlen árthat:
 + `dpkg-reconfigure openssh-server`
 + `service ssh start`
 
 iptables:
+
 ```
 iptables -P INPUT DROP -> Alap strategia megadasa
 iptables -F -> flush
@@ -353,6 +364,7 @@ iptables -P INPUT DROP
 ##### [+] Állítsuk be, hogy a 4. futási szinten csak 2db virtuális terminál induljon!
 + `vi /etc/inittab`
 + ahol volt 4-es bejegyzés, onnan a 4-es sort kivenni, majd:
+
 ```
 [n+1]:4:respawn:/sbin/mingetty tty[n+1]
 [n+2]:4:respawn:/sbin/mingetty tty[n+2]
@@ -374,21 +386,27 @@ df `fdisk -l | awk '{if ($2 == "*") print $1;}'` | grep -n 2 | awk '{print $2;}'
 + `stat /etc/passwd | grep Inode`
 
 ##### [+] Csomagolja + tömörítse össze a /etc könyvtárat etc.tgz néven. Töltse le a virtuális ....
-_tömörítés:_
+Tömörítés:
+
 + `cd /root/`
 + `tar cvzf etc.tgz /etc`
 
-_sshd:_
+sshd:
+
 + `netstat -tulpn | grep ssh` -> ha megy, akkor oké, ha nem, akkor config ellenőrzés, vagy:
 + `apt-get install openssh-server`
 
-_Virtualbox:_
+Virtualbox:
+
 Host-Only hálózat hozzáadása ha nincs:
+
 ```
 IPv4: 192.168.56.1
 maszk: 255.255.255.0
 ```
+
 DHCP:
+
 ```
 192.168.56.100
 255.255.255.0
@@ -397,11 +415,13 @@ DHCP:
 ``` 
 Virtuális gép -> hálózat: Host-Only
 
-_Debian:_
+Debian:
+
 + `dhclient` (`ifconfig -a` ellenőrzés képp)
 + `service ssh restart`
 
-_WinSCP:_
+WinSCP:
+
 + ip: `192.168.56.101` (nem biztos, hogy 101 lesz, ifconfig-ban írta mennyi)
 + port: 22
 + user: root
