@@ -292,15 +292,18 @@ Nincs megadva, hogy új partíció legyen-e létrehozva, vagy pl. file-ba menjen
 
 
 ##### [+] Állítsa be, hogy ne csak a root, hanem az összes felhasználó újraindíthassa a számítógépet!
-Telepíteni a sudo-t, majd beállítani a sudoers-t:
+Telepíteni kell a sudo-t, majd beállítani a sudoers-t:
 
 + `apt-get install sudo`
-+ `visudo` -> beír `ALL     ALL=(ALL)   ALL`
++ `visudo`
+
+```
+ALL ALL=(root) NOPASSWD: /sbin/reboot
+```
 
 Teszt:
 
-+ teszt userrel be kell jelentkezni
-+ `sudo reboot`  -> megadjuk a jelszavunk
+egy teszt userrel be kell jelentkezni, majd: `sudo reboot`
 
 ##### [+] Melyik fileba loggoljuk a cron alrendszer üzeneteit?
 + `cat /etc/syslog.conf | grep cron`
