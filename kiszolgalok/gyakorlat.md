@@ -1,5 +1,5 @@
-﻿##### [?] Általános hálózat és repository debug:
-Interface debug:
+﻿#### 1) Általános hálózat és repository debug:
+##### Interface debug:
 + `ifconfig -a` -> kiolvasni eth[szam]-ot
 + `vi /etc/network/interfaces` -> kijavítani a hibás részeket
 
@@ -11,7 +11,7 @@ iface eth[szam] inet dhcp
 + `/etc/init.d/networking restart`
 + `ifup eth[szam]`
 
-DNS debug:
+##### DNS debug:
 + `cat /etc/resolv.conf`
 
 ```
@@ -28,7 +28,7 @@ nameserver 8.8.8.8
 
 + `dhclient`
 
-TCP Wrapper:
+##### TCP Wrapper:
 A hosts.allow-nak precedenciája van a deny-al szemben, ezért, ha mindent engedni akarunk:
 + `vi /etc/hosts.allow`
 
@@ -36,7 +36,7 @@ A hosts.allow-nak precedenciája van a deny-al szemben, ezért, ha mindent enged
 ALL: ALL
 ```
 
-Repository debug:
+##### Repository debug:
 + `vi /etc/apt/sources.list`
 ```
 deb http://ftp.hu.debian.org/debian stable main non-free
@@ -45,6 +45,7 @@ deb http://security.debian.org/ squeeze/updates main non-free
 ```
 + `apt-get update`
 
+#### 2) Példák:
 
 ##### [+] Virtuális lemez mérete:
 `fdisk –l | grep Disk` -> kiolvas
