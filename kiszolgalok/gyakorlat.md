@@ -1,4 +1,45 @@
-﻿##### [+] Virtuális lemez mérete:
+﻿##### [?] Általános hálózat és repository debug:
+Interface debug:
++ `ifconfig -a` -> kiolvasni eth[szam]-ot
++ `vi /etc/network/interfaces` -> kijavítani a hibás részeket
+```
+auto eth[szam]
+iface eth[szam] inet dhcp
+```
++ `/etc/init.d/networking restart`
++ `ifup eth[szam]`
+
+DNS debug:
++ `cat /etc/resolv.conf`
+```
+nameserver 84.2.44.1
+nameserver 84.2.46.1
+``` 
++ meg kell pingelni a nameservereket, és ha egyik sem megy, akkor:
++ `vi /etc/resolv.conf`
+```
+nameserver 8.8.8.8
+``` 
++ `dhclient`
+
+TCP Wrapper:
+A hosts.allow-nak precedenciája van a deny-al szemben, ezért, ha mindent engedni akarunk:
++ `vi /etc/hosts.allow`
+```
+ALL: ALL
+```
+
+Repository debug:
++ `vi /etc/apt/sources.list`
+```
+deb http://ftp.hu.debian.org/debian stable main non-free
+deb http://ftp.debian.org/debian/ squeeze-updates main non-free
+deb http://security.debian.org/ squeeze/updates main non-free
+```
++ `apt-get update`
+
+
+##### [+] Virtuális lemez mérete:
 `fdisk –l | grep Disk` -> kiolvas
 
 ##### [+] Felhasználó legelső belépési dátuma:
@@ -24,7 +65,7 @@
 ##### [+] /etc/passwd inode száma (plusz egyebek):
 `ls –i /etc/passwd`
 
-##### [?] Hozzon létre "frissit" felhasználót debian-ban és mysql-ben is "backup88" jelszóval, állítsa be, hogy minden hónap 12. napján a teljes mysql adatbázist elmenti a /home/frissit könyvtárba! Írja le hol és mit állított be!
+##### [+] Hozzon létre "frissit" felhasználót debian-ban és mysql-ben is "backup88" jelszóval, állítsa be, hogy minden hónap 12. napján a teljes mysql adatbázist elmenti a /home/frissit könyvtárba! Írja le hol és mit állított be!
 + `adduser frissit --home /home/frissit` -> jelszó megadása -> tetszés szerint kitölt/kihagy
 + `cd /etc/init.d/`
 + `mysql -u root -p` -> belépés
@@ -32,8 +73,11 @@
 + `> INSERT INTO USER (User, Password) VALUES („frissit”, PASSWORD(„backup88”));`
 + `> FLUSH PRIVILEGES;`
 + `> quit`
+
 + `crontab -e`
-+ `* * 12 * * /usr/bin/mysqldump -u root dbname -p 1234 > /home/frissit/dbmentes.sql`
+```
+* * 12 * * /usr/bin/mysqldump -u root-p [jelszo] --all-databases --routines | gzip > /home/frissit/dbmentes_`date +'%m-%d-%Y'`.sql.gz
+```
 + `Ctrl + X` -> y
 
 ##### [+] Installáljuk fel az ftpd csomagot, majd állítsuk be, hogy a  "hallgato" felhasználó ne használhassa a szolgáltatást!
@@ -71,21 +115,17 @@
 + `tar -cvzf csomagolt.tar.gz /mnt/harmadik`
 + `stat csomagolt.tar.gz -> kiolvas méretet`
 
-##### [?] Melyik fileba logolja a local5 facility eseményeit?
-`grep "local" /etc/rsyslog.conf` -> kiolvas
+##### [+] Melyik fileba logolja a local5 facility eseményeit?
+local5 = syslog (syslogd)
+`cat /etc/rsyslog.conf | grep syslog` -> kiolvas (végén)
 
-##### [?] magyarázza el a rendszeren található tűzfal beállításait
+##### [+] magyarázza el a rendszeren található tűzfal beállításait
 `iptables -L` -> leolvas
 
 ##### [?] Az apache web server nem indul el, oldja meg, hogy minden bootoláskor elinduljon!
-+ `ifconfig –a` -> IP cím van-e? UP-e a kártya?
-+ Ha nem, akkor: `dhclient`.
-+ Ha igen, akkor:
-+ \- megnézzük az ifconfigban, hogy mi a neve a hálókártyának (pl. eth1)
-+ \- `vi /etc/network/interfaces` -> összes nem stimmelő eth[sorszám] –ot átírunk az interface valós nevére (pl. eth1)
-+ \-  `ifup eth[sorszám]` -> bekapcsoljuk a kártyát
-+ \- `cd /etc/init.d/` -> `./apache2 start`
-+ Ha nem megy mi a hiba? Hiányolja a `libpcre.so.3`-mat a /lib-ben. Át lett nevezve (?) tehát mondjuk lérehozunk egy soft linket a megfelelő névvel:
++ `cd /etc/init.d/` -> `./apache2 start`
+Ha nem megy mi a hiba?
+Hiányolja a `libpcre.so.3`-mat a /lib-ben. Át lett nevezve (?) tehát mondjuk lérehozunk egy soft linket a megfelelő névvel:
 + `cd /lib` -> `ln –s libpcre.so.3.12.1 libpcre.so.3`
 + Újabb próba hátha már megy: Ha még mindig nem, akkor iptables (minden mehet akár acceptre, nem volt megszorítás a feladat szövegében!):
 ```
@@ -94,6 +134,7 @@ iptables –P FORWARD ACCEPT
 iptables –P OUTPUT ACCEPT
 ```
 + Újabb próba: `cd /etc/init.d/` -> `./apache2 start` -> így már mennie kell
++ indítás minden bootkor: `update-rc.d apache2 defaults`
 
 ##### [?] Állítsa be, hogy a weboldalakat a /home/web könyvtárból szolgálja ki! Állítsa be, hogy a /home/web/private könyvtárat csak a 192.168.56.1-ről érhessék el!
 + `vi httpd.conf` -> `DocumentRoot "/home/web"`
@@ -134,8 +175,8 @@ opcionálisan:
 ##### [+] Hány darab érvényes shellt definiál a rendszer?
 `cat /etc/shells | wc -l`
 
-##### [?] Ha kiadjuk a "ping windows" parancsot melyik IP címet pingeljük?
-`ping windows` ?????
+##### [+] Ha kiadjuk a "ping windows" parancsot melyik IP címet pingeljük?
+`cat /etc/hosts | grep windows`
 
 ##### [+] Ha egy új felhasználót létrehozzunk, akkor a shadow fileban a 4. mező értéke 999. Mi ez, hol van beállítva?
 `cat /etc/shadow | more` -> ott a leírásban, hogy "minimum napok száma jelszó váltások közt"
@@ -241,7 +282,7 @@ Itt lehet gebasz:
 ~/.ssh/authorized-keys: jelszó nélkül hozzáférés
 /etc/hosts.allow -> sshd: [lokál ip]
 ```
-Ez is fog valamit csinálni, ami nem árthat:
+Ez sem feltétlen árthat:
 + `dpkg-reconfigure openssh-server`
 + `service ssh start`
 
