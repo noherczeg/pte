@@ -1,6 +1,7 @@
 ﻿## 1) Általános hálózat és kapcsolódók debugja:
 ##### Interface debug:
 A kártya nevének megkeresése, és javítása, ha el lenne rontva:
+
 `ifconfig -a` -> kiolvasni eth[szam]-ot
 `vi /etc/network/interfaces` -> kijavítani a potenciális hibás részeket
 
@@ -10,14 +11,17 @@ iface eth[szam] inet dhcp
 ```
 
 Újraindítás:
+
 `/etc/init.d/networking restart`
 `ifup eth[szam]`
 
 ##### DNS debug:
 Megnézni, hogy vannak-e definiálva serverek és megpingelni őket:
+
 `cat /etc/resolv.conf`
 
 Ha nem találjuk őket, vagy üres a file, akkor:
+
 `vi /etc/resolv.conf`
 
 ```
@@ -25,10 +29,12 @@ nameserver 8.8.8.8
 ```
 
 Végén a biztonság kedvéért:
+
 `dhclient`
 
 ##### TCP Wrapper:
 A hosts.allow-nak precedenciája van a deny-al szemben, ezért, ha mindent engedni akarunk:
+
 `vi /etc/hosts.allow`
 
 ```
@@ -53,6 +59,7 @@ deb http://security.debian.org/ squeeze/updates main non-free
 ```
 
 Végén frissíteni a meta adatokat:
+
 `apt-get update`
 
 ##### Szolgáltatás debug:
