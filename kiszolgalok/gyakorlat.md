@@ -1,5 +1,5 @@
 ﻿## 1) Általános hálózat és kapcsolódók debugja:
-##### Interface debug:
+### Interface debug:
 A kártya nevének megkeresése, és javítása, ha el lenne rontva:
 + `ifconfig -a` -> kiolvasni eth[szam]-ot
 + `vi /etc/network/interfaces` -> kijavítani a potenciális hibás részeket
@@ -13,7 +13,7 @@ iface eth[szam] inet dhcp
 + `/etc/init.d/networking restart`
 + `ifup eth[szam]`
 
-##### DNS debug:
+### DNS debug:
 Megnézni, hogy vannak-e definiálva serverek és megpingelni őket:
 
 `cat /etc/resolv.conf`
@@ -30,7 +30,7 @@ Végén a biztonság kedvéért:
 
 `dhclient`
 
-##### TCP Wrapper:
+### TCP Wrapper:
 A hosts.allow-nak precedenciája van a deny-al szemben, ezért, ha mindent engedni akarunk:
 
 `vi /etc/hosts.allow`
@@ -39,7 +39,7 @@ A hosts.allow-nak precedenciája van a deny-al szemben, ezért, ha mindent enged
 ALL: ALL
 ```
 
-##### iptables:
+### iptables:
 Amennyiben nincs megkötés semelyik feladatban sem arra nézve, hogy ne bántsuk, akkor a legegyszerűbb módszer, ha mindent engedünk :(
 
 + `iptables -P INPUT ACCEPT`
@@ -47,7 +47,7 @@ Amennyiben nincs megkötés semelyik feladatban sem arra nézve, hogy ne bántsu
 + `iptables -P OUTPUT ACCEPT`
 + `iptables -F`
 
-##### Repository debug:
+### Repository debug:
 `vi /etc/apt/sources.list`
 
 ```
@@ -60,7 +60,7 @@ Végén frissíteni a meta adatokat:
 
 `apt-get update`
 
-##### Szolgáltatás debug:
+### Szolgáltatás debug:
 Ellenőrizni kell, hogy fut-e adott szolgáltatás:
 
 `netstat -tulpn | grep [nev reszlet]`, ahol [nev reszlet] lehet pl ssh, vagy mysql, stb...
