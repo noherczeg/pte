@@ -1,9 +1,8 @@
 ﻿## 1) Általános hálózat és kapcsolódók debugja:
 ##### Interface debug:
 A kártya nevének megkeresése, és javítása, ha el lenne rontva:
-
-`ifconfig -a` -> kiolvasni eth[szam]-ot
-`vi /etc/network/interfaces` -> kijavítani a potenciális hibás részeket
++ `ifconfig -a` -> kiolvasni eth[szam]-ot
++ `vi /etc/network/interfaces` -> kijavítani a potenciális hibás részeket
 
 ```
 auto eth[szam]
@@ -11,9 +10,8 @@ iface eth[szam] inet dhcp
 ```
 
 Újraindítás:
-
-`/etc/init.d/networking restart`
-`ifup eth[szam]`
++ `/etc/init.d/networking restart`
++ `ifup eth[szam]`
 
 ##### DNS debug:
 Megnézni, hogy vannak-e definiálva serverek és megpingelni őket:
