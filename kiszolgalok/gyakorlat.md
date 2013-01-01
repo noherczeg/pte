@@ -57,9 +57,11 @@ Végén frissíteni a meta adatokat:
 
 ##### Szolgáltatás debug:
 Ellenőrizni kell, hogy fut-e adott szolgáltatás:
+
 `netstat -tulpn | grep [nev reszlet]`, ahol [nev reszlet] lehet pl ssh, vagy mysql, stb...
 
 Ha nem, akkor általában:
+
 `service [nev] start`, vagy `/etc/init.d/[nev] start`
 
 
