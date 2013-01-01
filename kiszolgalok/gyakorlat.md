@@ -309,7 +309,7 @@ egy teszt userrel be kell jelentkezni, majd: `sudo reboot`
 + `cat /etc/syslog.conf | grep cron`
 
 ##### [?] Határozza meg hány olyan felhasználó van, aki be tud lépni, létezik, de már nem létezik a home könyvtára.
-+ `cat /etc/shadow | grep '[:][*|!][:]' -v | cut -f1 -d:` -> userek listája, akik tudnak logolni (negált grep, azokra kiknek a sorában *, vagy ! van :) )
++ `cat /etc/shadow | grep '[:][*|!][:]' -v | cut -f 1 -d :` -> userek listája, akik tudnak logolni (negált grep, azokra kiknek a sorában *, vagy ! van :) )
 + `ls /home` -> könyvtárak listája (root nélkül!)
 
 konkluzió leírása (bash script kell az egy lépéséses kiíráshoz)...
