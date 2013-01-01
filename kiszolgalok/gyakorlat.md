@@ -38,11 +38,13 @@ ALL: ALL
 
 ##### Repository debug:
 + `vi /etc/apt/sources.list`
+
 ```
 deb http://ftp.hu.debian.org/debian stable main non-free
 deb http://ftp.debian.org/debian/ squeeze-updates main non-free
 deb http://security.debian.org/ squeeze/updates main non-free
 ```
+
 + `apt-get update`
 
 #### 2) Példák:
