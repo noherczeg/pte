@@ -52,7 +52,7 @@ Amennyiben nincs megkötés semelyik feladatban sem arra nézve, hogy ne bántsu
 + `iptables -P OUTPUT ACCEPT`
 + `iptables -F`
 
-### Repository debug:
+## Repository:
 `vi /etc/apt/sources.list`
 
 ```
