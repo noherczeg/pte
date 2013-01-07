@@ -92,7 +92,7 @@ UsePAM yes
 
 + `service ssh restart` futtatása esetén a server újraindul
 + ellenőrizni tudjuk, hogy fut-e a `netstat -tulpn | grep sshd`-vel
-+ belépni a `root@[ipcím]` paranccsal tudunk mind a virtuális gépen, mind kívülről
++ belépni az ` ssh root@[ipcím]` paranccsal tudunk mind a virtuális gépen, mind kívülről
 
 ## Apache2:
 
