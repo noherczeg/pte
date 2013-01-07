@@ -88,7 +88,7 @@ UsePAM yes
 
 ### Apache2:
 
-+ Először megnézzük fut-e: `netstat -tulpn | grep 'apache|http'`
++ Először megnézzük fut-e: `netstat -tulpn | egrep 'apache|http'`
 + Ha nem akkor: `service apache2 restart`
 + Különben config túrás ismét:
 
