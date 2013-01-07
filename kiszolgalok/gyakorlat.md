@@ -121,7 +121,7 @@ Különben pedig az altalanos_halozat_.... doksiban levoket kell kovetni!
 ## Apt:
 
 ##### [+] Hány csomag van felinstallálva?
-+ `dpkg --get-selections | wc -l`
+`dpkg --get-selections | wc -l`
 
 ##### [+] Az "rxvt" csomag 3 másik csomagtól függ, melyik az a 3?
 `apt-cache depends rxvt`
