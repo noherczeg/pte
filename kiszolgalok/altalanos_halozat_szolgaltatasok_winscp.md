@@ -28,7 +28,7 @@ iface eth[szam] inet dhcp
 
 __Kaphatunk új IP-t, ezért ellenőrizzük ismét__, hogy mi az: `ifconfig -a`
 
-### DNS debug:
+## DNS debug:
 Megnézni, hogy vannak-e definiálva serverek és megpingelni őket: `cat /etc/resolv.conf`
 
 Ha nem találjuk őket, vagy üres a file, akkor: `vi /etc/resolv.conf`
