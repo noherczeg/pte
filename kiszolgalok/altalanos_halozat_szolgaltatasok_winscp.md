@@ -1,4 +1,4 @@
-# Általános hálózat debugja:
+# Általános debug:
 Ezeket a lépéseket célszerű azonnal véghez vinni, vagy ez alapján ellenőrizni a beállításokat.
 
 ## Boot haxx:
