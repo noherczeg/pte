@@ -33,7 +33,7 @@ df `fdisk -l | awk '{if ($2 == "*") print $1;}'` | grep -n 2 | awk '{print $2;}'
 
 ##### [+] Keresse meg a merevlemezen az összes olyan filet, aminek a nevében szerepel az "alma" szó. Ezeket másolja át az /etc/alma -ba!
 + `mkdir /etc/alma` -> ha még nem létezett a cél mappa
-+ `find . -iname "*alma*" -exec cp {} /etc/alma \;`
++ `find / -iname "*alma*" -exec cp {} /etc/alma \;`
 
 ##### [+] Virtuális lemez mérete:
 `fdisk –l | grep Disk` -> kiolvas
