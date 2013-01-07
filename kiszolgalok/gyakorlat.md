@@ -1,6 +1,6 @@
 ﻿#Példa feladatok:
 
-###File / filerendszer:
+## File / filerendszer:
 
 ##### [+] A linuxon ha CDROM-ot akarunk felcsatolni milyen eszközt csatolnánk fel? Mi a CDROM eszköz neve?
 + `find /dev -name cdrom` -> nevét kikeresni
