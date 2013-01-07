@@ -143,7 +143,7 @@ Különben pedig az altalanos_halozat_.... doksiban levoket kell kovetni!
 
 ##### [+] Kapcsolja be a userdir modult az apache-ban. Állítsa be, hogy minden felhasználó a "public" könyvtárából szolgálja ki a fileokat!
 + `a2enmod userdir` -> bekapcs
-+ `vi /etc/apache2/mods-enabled/userdir.conf` -> átírni erre: "<Directory /home/*/public/>
++ `vi /etc/apache2/mods-enabled/userdir.conf` -> átírni erre: "\<Directory /home/*/public/\>"
 
 ##### [?] Az apache web server nem indul el, oldja meg, hogy minden bootoláskor elinduljon!
 + `service apache2 start`
