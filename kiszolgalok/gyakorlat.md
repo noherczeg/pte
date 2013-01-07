@@ -105,6 +105,7 @@ opcionálisan (kulcs generálás):
 
 ##### [?] Az SSH server nem indul, írja le mi a probléma, oldja meg!
 Ha mákunk van ez ki fogja írni mi a baja: `service ssh restart`
+
 Különben pedig az altalanos_halozat_.... doksiban levoket kell kovetni!
 
 ## FTP:
