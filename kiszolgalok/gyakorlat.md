@@ -190,13 +190,14 @@ iptables –F
 
 ##### [+] slashdot.org-ért ki a felelős (e-mail, zóna file)?
 `nslookup -type=soa slashdot.org` -> kiolvas
+Ha nem találja az nslookup-ot, akkor: `apt-get install dnsutils`
 
 ## MySQL:
 
 ##### [+] A mysql servernek nem ismert a jelszava, változtassa meg "123"-ra! Határozza meg hány gépről lehet hozzáférni a SAP101 adatb.-hoz!
 + `service mysql stop`
 + `mysqld_safe –skip-grant-tables &`
-+ `mysql –u root -p` -> belépés
++ `mysql –u root` -> belépés
 + `> use mysql;`
 + `> update user set password=password('123') where user=’root’;`
 + `> flush privileges;`
