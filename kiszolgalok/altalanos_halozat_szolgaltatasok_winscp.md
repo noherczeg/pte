@@ -100,7 +100,7 @@ UsePAM yes
 + Ha nem akkor: `service apache2 restart`
 + Különben config túrás ismét:
 
-Az `/etc/apache2/apache2_conf`-ban szerepeljenek a következők:
+Az `/etc/apache2/apache2.conf`-ban szerepeljenek a következők:
 
 ```
 include httpd.conf
