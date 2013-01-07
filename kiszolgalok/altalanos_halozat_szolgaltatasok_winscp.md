@@ -1,6 +1,14 @@
 # Általános hálózat debugja:
 Ezeket a lépéseket célszerű azonnal véghez vinni, vagy ez alapján ellenőrizni a beállításokat.
 
+## Boot haxx:
+Ha nem ad meg root  jelszót és nem tudunk vele belépni, akkor az alábbiakat kell csinálni:
+
++ Grubban nyomni egy "e"-t
++ A "linux kernel" sor végére: `init=/bin/sh rw`, majd Ctrl + X
++ `passwd root` -> megadunk egy jelszót
++ `sync`, majd `reboot`
+
 ## Interface debug:
 A kártya nevének megkeresése, és javítása, ha el lenne rontva:
 
