@@ -1,7 +1,7 @@
-## 1) Általános hálózat debugja:
+# Általános hálózat debugja:
 Ezeket a lépéseket célszerű azonnal véghez vinni, vagy ez alapján ellenőrizni a beállításokat.
 
-### Interface debug:
+## Interface debug:
 A kártya nevének megkeresése, és javítása, ha el lenne rontva:
 
 + `ifconfig -a` -> kiolvasni az eth[szam]-ot
@@ -29,14 +29,14 @@ Ha nem találjuk őket, vagy üres a file, akkor: `vi /etc/resolv.conf`
 nameserver 8.8.8.8
 ```
 
-### TCP Wrapper:
+## TCP Wrapper:
 A hosts.allow-nak precedenciája van a deny-al szemben, ezért, ha mindent engedni akarunk: `vi /etc/hosts.allow`
 
 ```
 ALL: ALL
 ```
 
-### iptables:
+## iptables:
 Amennyiben nincs megkötés semelyik feladatban sem arra nézve, hogy ne bántsuk, akkor a legegyszerűbb módszer, ha mindent engedünk :(
 
 + `iptables -P INPUT ACCEPT`
@@ -55,14 +55,14 @@ deb http://security.debian.org/ squeeze/updates main non-free
 
 Végén frissíteni a meta adatokat: `apt-get update`
 
-## 2) Szolgáltatás debug:
+# Szolgáltatás debug:
 __Kulcs gondolatok:__
 
 + A következő beállítások feltételezik, hogy a hálózatunk tökéletesen működik!
 + Az iptables sok helyen bekavarhat, ezért: __ha nem full ACCEPTEN van és üres listával__, akkor azt célszerű lehet ellenőrizni, vagy azzá tenni!
 + Ha az `/etc/hosts.allow`-ban szerepel az `ALL:ALL`, akkor azzal nem kell foglalkozni, ellenkező esetben vagy írjuk be mi, vagy külön a szolgáltatásokat adjuk hozzá!
 
-### SSH:
+## SSH:
 + Először megnézzük fut-e: `netstat -tulpn | grep ssh`
 + Ha nem akkor: `service ssh restart`
 + Ha nem indul, akkor `apt-get install openssh-server openssh-client`
@@ -86,7 +86,7 @@ UsePAM yes
 + ellenőrizni tudjuk, hogy fut-e a `netstat -tulpn | grep sshd`-vel
 + belépni a `root@[ipcím]` paranccsal tudunk mind a virtuális gépen, mind kívülről
 
-### Apache2:
+## Apache2:
 
 + Először megnézzük fut-e: `netstat -tulpn | egrep 'apache|http'`
 + Ha nem akkor: `service apache2 restart`
@@ -119,14 +119,13 @@ ErrorLog /var/log/apache2/error.log
 PidFile /var/run/apache2.pid
 ```
 
-### MySQL:
+## MySQL:
 
 + megnézni, hogy fut-e: `netstat -tulpn | grep mysql`
 + ha nem, akkor restart: `service mysql restart`
 + ha gebasz van, akkor: `vi /etc/hosts.allow` és tegyük bele `mysqld: ALL`, vagy a szokásos `ALL:ALL`-t :P
 
-## 3) WinSCP:
-
+# WinSCP:
 
 __VirtualBox:__
 

@@ -1,6 +1,6 @@
-﻿##Példa feladatok:
+﻿#Példa feladatok:
 
-### File / filerendszer:
+###File / filerendszer:
 
 ##### [+] A linuxon ha CDROM-ot akarunk felcsatolni milyen eszközt csatolnánk fel? Mi a CDROM eszköz neve?
 + `find /dev -name cdrom` -> nevét kikeresni
@@ -66,7 +66,7 @@ Nincs megadva, hogy új partíció legyen-e létrehozva, vagy pl. file-ba menjen
 + `mkfs.msdos -F 16 /tmp/fd`
 + `man fsck.vfat`
 
-### SSH:
+## SSH:
 
 ##### [+] Hány darab dinamikus könyvtárat használ az SSH server?
 `ldd /usr/sbin/sshd | wc -l`
@@ -107,7 +107,7 @@ opcionálisan (kulcs generálás):
 Ha mákunk van ez ki fogja írni mi a baja: `service ssh restart`
 Különben pedig az altalanos_halozat_.... doksiban levoket kell kovetni!
 
-### FTP:
+## FTP:
 
 ##### [+] Állítsa be, hogy az FTP daemonhoz csak a 192.168.56.1-ről lehessen hozzáférni, máshonnan nem!
 + `vi hosts.deny` -> ftpd: ALL
@@ -117,7 +117,7 @@ Különben pedig az altalanos_halozat_.... doksiban levoket kell kovetni!
 + `apt-get install ftpd ftp`
 + `vi /etc/ftpusers` -> beír: hallgato
 
-### Apt:
+## Apt:
 
 ##### [+] Hány csomag van felinstallálva?
 + `dpkg --get-selections | wc -l`
@@ -135,7 +135,7 @@ Különben pedig az altalanos_halozat_.... doksiban levoket kell kovetni!
 ##### [+] Van-e olyan csomag, aminek a neve "aajm"? Ha van ki a karbantartója?
 `apt-cache show aajm | grep Maintainer`
 
-### Apache:
+## Apache:
 
 ##### [+] Hány darab dinamikus könyvtárat használ az apache server?
 + `apache2ctl -M | wc -l` -> számuk
@@ -174,7 +174,7 @@ iptables –F
 </Directory>
 ```
 
-### DNS:
+## DNS:
 
 ##### [-] Hány darab dinamikus könyvtárat használ a DNS server?
 `ldd /etc/bind/named.conf | wc -l` -> KB NEM EZ KELL
@@ -190,7 +190,7 @@ iptables –F
 ##### [+] slashdot.org-ért ki a felelős (e-mail, zóna file)?
 `nslookup -type=soa slashdot.org` -> kiolvas
 
-### MySQL:
+## MySQL:
 
 ##### [+] A mysql servernek nem ismert a jelszava, változtassa meg "123"-ra! Határozza meg hány gépről lehet hozzáférni a SAP101 adatb.-hoz!
 + `service mysql stop`
@@ -205,7 +205,7 @@ iptables –F
 + `> use mysql;`
 + `> select count(distinct Host) from db where Db = 'SAP101';`
 
-### Felhasználók:
+## Felhasználók:
 
 ##### [+] Amikor egy felhasználóként belépünk, akkor létezik egy MONITOR shell változó. Írja le, hogy hol van ez beállítva!
 + `cat /etc/skel/.profile`, vagy
@@ -262,7 +262,7 @@ egy teszt userrel be kell jelentkezni, majd: `sudo reboot`
 
 konkluzió leírása (bash script kell az egy lépéséses kiíráshoz)...
 
-### Egyéb:
+## Egyéb:
 
 ##### [+] Bejelentkezés utáni üdvözlő szöveg:
 `vi /etc/motd`
