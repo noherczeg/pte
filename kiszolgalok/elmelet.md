@@ -1,5 +1,4 @@
-﻿Kiszolgalok Uzemeltetese
-===========
+﻿#Elméleti kérdések:
 
 ####1) Milyen utasítással nézné meg, hogy egy adott gép hálózatra van-e kötve és aktív hálózati kapcsolattal bír? Magyarázza el a kimenetet!
 `ifconfig`, interfacek listáját mutatja, illetve azoknak az állapotát, információkat (ip, mac, up/down/stb..)
@@ -417,7 +416,7 @@ fi
 ```
 
 ####74) /etc/inittab fileban mit jelent a következő sor és konkrétan mit jelent a respawn kifejezés: 2:234:respawn:/sbin/getty 9600 tty2 ?
-+ 2, 3, 4 futási szinteken mindig fut (újraindítja, ha leáll) 
++ 2, 3, 4 futási szinteken mindig fut (újraindítja, ha leáll)
 + Megjeleníti a login sort a console-on (tty2)
 
 ####75) Mit jelent a rekurzív DNS lekérés?
@@ -437,19 +436,19 @@ fi
 ####77) Mit jelent a chroot környezet? Mire való? Mit kell beállítani?
 A chroot egy művelet Unix operációs rendszerekben, ami egy parancsot vagy az interaktív shellt a paraméterben megadott speciális gyökérkönyvtárral futtatja. A futó folyamat mintegy be van börtönözve ebbe a könyvtárba, nem tudja az azon kívüli fájlokat elérni.
 
-+ Tesztelés és fejlesztés 
-+ Kompatibilitás (legacy szoftverekhez) 
++ Tesztelés és fejlesztés
++ Kompatibilitás (legacy szoftverekhez)
 + Privilégium szeparáció
 ```
 chdir(dir);        // explicit módon váltsunk a könyvtárba
-chroot(dir);  
+chroot(dir);
 setXXuid(nonroot); // adjuk fel a root jogokat
 ```
 
 ####78) ACID ...
-+ Atomicity: nincs részbeni végrehajtás 
-+ Consistency: Az adatbázis egy konzisztens állapotból egy másik konzisztens állapotba kerül 
-+ Isolation: Tranzakció láthatatlan mások számára amíg végre nem hajtódik 
++ Atomicity: nincs részbeni végrehajtás
++ Consistency: Az adatbázis egy konzisztens állapotból egy másik konzisztens állapotba kerül
++ Isolation: Tranzakció láthatatlan mások számára amíg végre nem hajtódik
 + Durability: Tartósság, ha egyszer lefutott akkor a változás végleges
 
 ####79) Az alábbi rekordban magyarázza el az első sor jelentését, illetve ki, vagy mi fogja használni az időzítő számlálókat?
