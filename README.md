@@ -2,6 +2,10 @@ PTE
 ===
 
 ## Kiszolgálók üzemeltetése:
+
+### Elmélet:
++ [Elméleti kérdések](https://github.com/noherczeg/pte/blob/master/kiszolgalok/elmelet.md)
+
 #### Általános hálózat és szolgáltatások, winscp:
 + [Boot haxx](https://github.com/noherczeg/pte/blob/master/kiszolgalok/altalanos_halozat_szolgaltatasok_winscp.md#boot-haxx)
 + [Hálózat debugja](https://github.com/noherczeg/pte/blob/master/kiszolgalok/altalanos_halozat_szolgaltatasok_winscp.md#%C3%81ltal%C3%A1nos-h%C3%A1l%C3%B3zat-debugja)
