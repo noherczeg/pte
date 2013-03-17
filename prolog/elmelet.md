@@ -3,8 +3,8 @@
 ----------
 
 #### Források:
-(Tamsin Treasure-Jones)[http://www.doc.gold.ac.uk/~mas02gw/prolog_tutorial/prologpages/]
-(J.R.Fisher)[http://www.csupomona.edu/~jrfisher/www/prolog_tutorial/contents.html]
+[Tamsin Treasure-Jones](http://www.doc.gold.ac.uk/~mas02gw/prolog_tutorial/prologpages/)
+[J.R.Fisher](http://www.csupomona.edu/~jrfisher/www/prolog_tutorial/contents.html)
 
 ## 1) Predikátumok (tények/állítások)
 
