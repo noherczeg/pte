@@ -4,6 +4,7 @@
 
 #### Források:
 Tamsin Treasure-Jones: [Introduction to Prolog](http://www.doc.gold.ac.uk/~mas02gw/prolog_tutorial/prologpages/)
+
 J.R.Fisher: [prolog_tutorial](http://www.csupomona.edu/~jrfisher/www/prolog_tutorial/contents.html)
 
 ## 1) Predikátumok (tények/állítások)
