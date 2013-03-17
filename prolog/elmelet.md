@@ -3,8 +3,8 @@
 ----------
 
 #### Források:
-[Tamsin Treasure-Jones](http://www.doc.gold.ac.uk/~mas02gw/prolog_tutorial/prologpages/)
-[J.R.Fisher](http://www.csupomona.edu/~jrfisher/www/prolog_tutorial/contents.html)
+[Tamsin Treasure-Jones: Introduction to Prolog](http://www.doc.gold.ac.uk/~mas02gw/prolog_tutorial/prologpages/)
+[J.R.Fisher: prolog_tutorial](http://www.csupomona.edu/~jrfisher/www/prolog_tutorial/contents.html)
 
 ## 1) Predikátumok (tények/állítások)
 
@@ -29,9 +29,9 @@ Ezek után ha rákérdezünk az alábbiakra:
 
 Parancs                       | Eredmény		| Magyarázat
 :---------------------------- | :-------------	| :-------------
-_:- esik._                    | `true`			| definiálva van, tehát igaz
-_:- erik_okos._               | `true`			| definiálva van, tehát igaz
-_:- john_elorelato._          | `error`			| nincs definiálva, a prolog nem találja, ezért hibát dob
+_?- esik._                    | `true`			| definiálva van, tehát igaz
+_?- erik_okos._               | `true`			| definiálva van, tehát igaz
+_?- john_elorelato._          | `error`			| nincs definiálva, a prolog nem találja, ezért hibát dob
 
 
 ### b) Predikátumok relációkkal:
@@ -51,10 +51,10 @@ Ezek után, ha megkérdezzük a prologot:
 
 Parancs                       | Eredmény		| Magyarázat
 :---------------------------- | :-------------	| :-------------
-_:- kedveli(john,mary)._      | `true`			| van találat
-_:- kedveli(mary,john)._      | `false`			| a reláció ebbe az irányba nem volt definiálva
-_:- eszik(jani,alma)._        | `true`			| van találat
-_:- eszik(mary,korte)._       | `false`			| nincs definiálva
+_?- kedveli(john,mary)._      | `true`			| van találat
+_?- kedveli(mary,john)._      | `false`			| a reláció ebbe az irányba nem volt definiálva
+_?- eszik(jani,alma)._        | `true`			| van találat
+_?- eszik(mary,korte)._       | `false`			| nincs definiálva
 
 ## 2) Változók alkalmazása
 
@@ -70,7 +70,7 @@ Példa:
 
 Parancs                       | Válasz			| Eredmény			| Magyarázat
 :---------------------------- | :-------------	| :-------------	| :-------------
-_:- eszik(fred,Mit)._         | `Mit=alma`      | `true`			| A _Mit_ változó(k)ba a prolog behelyettesíti a predikátumban megadott értéke(ke)t, ha talál
+_?- eszik(fred,Mit)._         | `Mit=alma`      | `true`			| A _Mit_ változó(k)ba a prolog behelyettesíti a predikátumban megadott értéke(ke)t, ha talál
 
 
 A változókra az alábbi szabályok érvényesek:
@@ -90,7 +90,7 @@ utazik(feri,kocsival).
 
 Parancs                       | Válasz			| Eredmény			| Magyarázat
 :---------------------------- | :-------------	| :-------------	| :-------------
-_:- szereti(jani,Kit)._       | `Kit=marcsi`    | `true`			| van találat (igazzal tér vissza), a változóba kerül a megfelelõ érték
-_:- szereti(marcsi,Kit)._     | `false`         | `false`			| marcsira nem definiáltunk predkátumot, ezért a lekérdezés hamissal tér vissza
-_:- eszik(marcsi,Mit)._       | `false`         | `false`			| nincs definiálva a predikátum, hamissal tér vissza
-_:- utazik(feri,Mivel)._      | `Mivel=busszal`, `Mivel=kocsival`| `true`			| van találat, több is, a változóba több érték is bekerül
+_?- szereti(jani,Kit)._       | `Kit=marcsi`    | `true`			| van találat (igazzal tér vissza), a változóba kerül a megfelelõ érték
+_?- szereti(marcsi,Kit)._     | `false`         | `false`			| marcsira nem definiáltunk predkátumot, ezért a lekérdezés hamissal tér vissza
+_?- eszik(marcsi,Mit)._       | `false`         | `false`			| nincs definiálva a predikátum, hamissal tér vissza
+_?- utazik(feri,Mivel)._      | `Mivel=busszal`; `Mivel=kocsival`| `true`			| van találat, több is, a változóba több érték is bekerül
