@@ -118,14 +118,34 @@ Ha le akarnánk kérdezni az 5-ös azonosítójú elem adatait:
 
 Parancs                       | Változó			  | Eredmény			| Magyarázat
 :---------------------------- | :-------------	  | :-------------	    | :-------------
-`?- album(5,Eloado, Album, Kedvenc_Dal).`         | _Eloado = eagles_, _Album = hotel_california_, _Kedvenc_Dal = new_kind_in_town_    | `true`			| van találat (igazzal tér vissza), a változókba bekerülnek a megfelelõ értékek
-`?- album(5,Eloado, _, _).`   | _Eloado = eagles_ | `true`			    | van találat (igazzal tér vissza), viszont csak az eloadora voltunk kíváncsiak, a többi adatot mellõzni akartuk, így csak az elõadót kapjuk meg
+`?- album(5,Eloado,Album,Kedvenc_Dal).`           | _Eloado = eagles_, _Album = hotel_california_, _Kedvenc_Dal = new_kind_in_town_    | `true`			| van találat (igazzal tér vissza), a változókba bekerülnek a megfelelõ értékek
+`?- album(5,Eloado,_,_).`     | _Eloado = eagles_ | `true`			    | van találat (igazzal tér vissza), viszont csak az eloadora voltunk kíváncsiak, a többi adatot mellõzni akartuk, így csak az elõadót kapjuk meg
+
+__FIGYELEM!__
+
+Amennyiben megpróbálunk kevesebb paraméterrel lekérdezni predikátumokat, mint amennyivel definiálva lennének, a Prolog hibát fog dobni!
+
+pl. hogy ki utazik az alábbi listából budapestre:
+```
+utazik(attila, budapest, eger).
+utazik(eva, pecs, paks).
+```
+
+Parancs                       | Hiba            | Magyarázat
+:---------------------------- | :-------------	| :-------------
+`?- utazik(Ki,budapest).`     | _Undefined procedure: utazik/2_   | Az utazik lekérdezést 2 paraméterrel próbáltuk meghívni
+                              | _However, there are definitions for: utazik/3_   | Ugyanakkor azt 3-mal kellett volna (3 tulajdonság van definiálva az utazik predikátumban)
+
+Helyes lekérdezés: `?- utazik(Ki,budapest,_).`
 
 ### c) Paraméter ignorálása
 
-Az elõzõ példán keresztül került szemléltetésre az, hogy hogyan tudunk egyes adatokat ignorálni/kihagyni.
+Az elõzõ példán keresztül került szemléltetésre az, hogy hogyan tudunk egyes adatokat ignorálni/eltekinteni paraméterezés során.
 
 Amennyiben egyes adatokat ignorálni szeretnénk egy lekérdezés esetén:
 
 - az ahhoz az adathoz tartozó paraméter helyébe "`_`" jelet kell tennünk
 - semmi más nem szerepelhet az adott paraméter helyen!
+
+
+

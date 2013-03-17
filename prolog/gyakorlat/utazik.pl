@@ -1,0 +1,1 @@
+utazik(attila, budapest, eger).
