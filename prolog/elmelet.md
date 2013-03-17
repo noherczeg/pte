@@ -60,6 +60,7 @@ Parancs                       | Eredmény		| Magyarázat
 
 Mostanra tudunk predikátumokat megfogalmazni, viszont ezzel még nem megyünk sokra. Ahhoz, hogy ezeket komplexebb feladatokra is tudjuk használni, pl. kérdéseket(lekérdezéseket) megfogalmazni szükségünk lesz a __változókra__.
 
+### a) Egyszerû változó használat
 Tegyük fel, hogy definiálva van az alábbi:
 
 `eszik(feri,alma).`
@@ -91,6 +92,40 @@ utazik(feri,kocsival).
 Parancs                       | Változó			| Eredmény			| Magyarázat
 :---------------------------- | :-------------	| :-------------	| :-------------
 `?- szereti(jani,Kit).`       | _Kit=marcsi_    | `true`			| van találat (igazzal tér vissza), a változóba kerül a megfelelõ érték
-`?- szereti(marcsi,Kit).`     |                 | `false`			| marcsira nem definiáltunk predkátumot, ezért a lekérdezés hamissal tér vissza
+`?- szereti(marcsi,Kit).`     |                 | `false`			| ebbe az irányba nem definiáltunk predikátumot, ezért a lekérdezés hamissal tér vissza
+`?- szereti(Kit,marcsi).`     | _Kit=jani_      | `true`			| így már van találat
 `?- eszik(marcsi,Mit).`       |                 | `false`			| nincs definiálva a predikátum, hamissal tér vissza
 `?- utazik(feri,Mivel).`      | _Mivel=busszal_; _Mivel=kocsival_| `true`			| van találat, több is, a változóba több érték is bekerül
+
+### b) Összetett változó használat
+
+Tegyük fel, hogy van egy albumokból álló gyûjteményünk az iTunes-on, aminél:
+
+- a(z) #1 paraméter az album azonosítója
+- a(z) #2 paraméter az elõadó neve
+- a(z) #3 paraméter az album címe
+- a(z) #4 paraméter a kedvenc szám címe az albumról
+
+```
+album(1,van_morrison,astral_weeks,madam_george).
+album(2,beatles,sgt_pepper,a_day_in_the_life).
+album(3,beatles,abbey_road,something).
+album(4,rolling_stones,sticky_fingers,brown_sugar).
+album(5,eagles,hotel_california,new_kid_in_town).
+```
+
+Ha le akarnánk kérdezni az 5-ös azonosítójú elem adatait:
+
+Parancs                       | Változó			  | Eredmény			| Magyarázat
+:---------------------------- | :-------------	  | :-------------	    | :-------------
+`?- album(5,Eloado, Album, Kedvenc_Dal).`         | _Eloado = eagles_, _Album = hotel_california_, _Kedvenc_Dal = new_kind_in_town_    | `true`			| van találat (igazzal tér vissza), a változókba bekerülnek a megfelelõ értékek
+`?- album(5,Eloado, _, _).`   | _Eloado = eagles_ | `true`			    | van találat (igazzal tér vissza), viszont csak az eloadora voltunk kíváncsiak, a többi adatot mellõzni akartuk, így csak az elõadót kapjuk meg
+
+### c) Paraméter ignorálása
+
+Az elõzõ példán keresztül került szemléltetésre az, hogy hogyan tudunk egyes adatokat ignorálni/kihagyni.
+
+Amennyiben egyes adatokat ignorálni szeretnénk egy lekérdezés esetén:
+
+- az ahhoz az adathoz tartozó paraméter helyébe "`_`" jelet kell tennünk
+- semmi más nem szerepelhet az adott paraméter helyen!
