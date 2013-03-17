@@ -68,9 +68,9 @@ Hogyan kérdezzük azt le, hogy mit eszik feri? Változó segítségével!
 
 Példa:
 
-Parancs                       | Válasz			| Eredmény			| Magyarázat
+Parancs                       | Változó			| Eredmény			| Magyarázat
 :---------------------------- | :-------------	| :-------------	| :-------------
-_?- eszik(fred,Mit)._         | `Mit=alma`      | `true`			| A _Mit_ változó(k)ba a prolog behelyettesíti a predikátumban megadott értéke(ke)t, ha talál
+_?-` `eszik(fred,Mit)._         | `Mit=alma`      | `true`			| A _Mit_ változó(k)ba a prolog behelyettesíti a predikátumban megadott értéke(ke)t, ha talál
 
 
 A változókra az alábbi szabályok érvényesek:
@@ -88,9 +88,9 @@ utazik(feri,busszal).
 utazik(feri,kocsival).
 ```
 
-Parancs                       | Válasz			| Eredmény			| Magyarázat
+Parancs                       | Változó			| Eredmény			| Magyarázat
 :---------------------------- | :-------------	| :-------------	| :-------------
 _?- szereti(jani,Kit)._       | `Kit=marcsi`    | `true`			| van találat (igazzal tér vissza), a változóba kerül a megfelelõ érték
-_?- szereti(marcsi,Kit)._     | `false`         | `false`			| marcsira nem definiáltunk predkátumot, ezért a lekérdezés hamissal tér vissza
-_?- eszik(marcsi,Mit)._       | `false`         | `false`			| nincs definiálva a predikátum, hamissal tér vissza
+_?- szereti(marcsi,Kit)._     |                 | `false`			| marcsira nem definiáltunk predkátumot, ezért a lekérdezés hamissal tér vissza
+_?- eszik(marcsi,Mit)._       |                 | `false`			| nincs definiálva a predikátum, hamissal tér vissza
 _?- utazik(feri,Mivel)._      | `Mivel=busszal`; `Mivel=kocsival`| `true`			| van találat, több is, a változóba több érték is bekerül
