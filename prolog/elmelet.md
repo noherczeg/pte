@@ -70,7 +70,7 @@ Példa:
 
 Parancs                       | Válasz			| Magyarázat
 :---------------------------- | :-------------	| :-------------
-_:- eszik(fred,__Mit__)._     | `Mit=alma`      | A _Mit_ változóba a prolog behelyettesíti a predikátumban megadott értéke(ke)t
+_:- eszik(fred,Mit)._         | `Mit=alma`      | A _Mit_ változóba a prolog behelyettesíti a predikátumban megadott értéke(ke)t
 
 
 A változókra az alábbi szabályok érvényesek:
@@ -90,7 +90,7 @@ utazik(feri,kocsival).
 
 Parancs                       | Válasz			| Magyarázat
 :---------------------------- | :-------------	| :-------------
-_:- szereti(jani,__Kit__)._   | `Kit=marcsi`    | van találat
-_:- szereti(marcsi,__Kit__)._ | `false`         | a reláció ebbe az irányba nem volt definiálva
-_:- eszik(marcsi,__Mit__)._   | `false`         | nincs definiálva
-_:- utazik(feri,__Mivel__)._  | `Mivel=busszal`, `Mivel=kocsival`| van találat
+_:- szereti(jani,Kit)._       | `Kit=marcsi`    | van találat
+_:- szereti(marcsi,Kit)._     | `false`         | a reláció ebbe az irányba nem volt definiálva
+_:- eszik(marcsi,Mit)._       | `false`         | nincs definiálva
+_:- utazik(feri,Mivel)._      | `Mivel=busszal`, `Mivel=kocsival`| van találat
