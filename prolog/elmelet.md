@@ -182,7 +182,7 @@ __Értelmezés:__ Adott `X` esetén `X` akkor _halando_, ha `X` _ember_. Másik érte
 Parancs                       | Eredmény		| Magyarázat
 :---------------------------- | :-------------	| :-------------
 `?- halando(szokratesz).`     | `true`			| Mivel azt állítottuk, hogy _szokratesz_ ember, ezért teljesult az, hogy halando
-`?- halando(zeusz).`          | `false`			| Azt állítottuk, hogy zeusz istten, tehát nem halandó, tehát hamissal tér vissza
+`?- halando(zeusz).`          | `false`			| Azt állítottuk, hogy zeusz isten, tehát nem halandó, tehát hamissal tér vissza
 
 Ahhoz, hogy bebizonyítsuk, hogy _szokratesz_ halando, ahhoz elõször a predikátumok között azt kellett állítanunk, hogy ember :)
 
@@ -197,3 +197,41 @@ Parancs               | Változó			  | Eredmény			| Magyarázat
 `?- halando(H).`      | _H = szokratesz_, _H = galileo_    | `true`			| Van találat (igazzal tér vissza), a változókba bekerülnek a megfelelõ értékek
 `?- ember(E).`        | _E = szokratesz_, _E = galileo_    | `true`			| Természetesen az alap predikátumokra is rá tudunk kérdezni külön (ezt csak ismétlésképp)
 
+### b) Összetett szabályok
+
+A való életben azért a fentebb bemutatott példáknál bonyolultabb a helyzet, több szempont alapján kell általában dönteni.
+
+Amit egyéb programozási nyelvek esetén elágazásoknak, feltételeknek szoktunk nevezni, na most azokról lesz szó!
+
+Tegyük fel, hogy ahhoz, hogy valami tetszen az alábbiaknak kell teljesülni:
+
+```
+/** szabalyok */
+tetszik(X) :-
+    piros(X),
+    auto(X).
+
+tetszik(X) :-
+    kek(X),
+    motor(X).
+
+auto(vw_beatle).
+auto(ford_escort).
+motor(harley_davidson).
+kek(vw_beatle).
+piros(ford_escort).
+kek(harley_davidson).
+```
+
+Lekérdezési próbák arra, hogy melyik tetszhet:
+
+Parancs                    | Eredmény        | Magyarázat
+:------------------------- | :-------------	 | :-------------
+`?- tetszik(vw_beatle).`   | `false`	     | autó, de kék
+`?- tetszik(ford_escort)`  | `true`		     | piros és autó is
+
+Kilistázni, hogy mi:
+
+Parancs              | Változó          | Eredmény           | Magyarázat
+:--------------------| :-------------	| :-------------	 | :-------------
+`?- tetszik(Mi).`    | _Mi = ford_escort ._, _Mi = harley_davidson_	| `true`     | Csak a Beatle felelt felelt meg a felsorolt felteteleknek
