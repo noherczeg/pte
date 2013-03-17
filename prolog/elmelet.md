@@ -197,7 +197,7 @@ Parancs               | Változó			  | Eredmény			| Magyarázat
 `?- halando(H).`      | _H = szokratesz_, _H = galileo_    | `true`			| Van találat (igazzal tér vissza), a változókba bekerülnek a megfelelõ értékek
 `?- ember(E).`        | _E = szokratesz_, _E = galileo_    | `true`			| Természetesen az alap predikátumokra is rá tudunk kérdezni külön (ezt csak ismétlésképp)
 
-### b) Összetett szabályok
+### c) Összetett szabályok
 
 A való életben azért a fentebb bemutatott példáknál bonyolultabb a helyzet, több szempont alapján kell általában dönteni.
 
@@ -223,7 +223,7 @@ piros(ford_escort).
 kek(harley_davidson).
 ```
 
-Lekérdezési próbák arra, hogy melyik tetszhet:
+### d) Lekérdezési próbák arra, hogy melyik tetszhet:
 
 Parancs                    | Eredmény        | Magyarázat
 :------------------------- | :-------------	 | :-------------
