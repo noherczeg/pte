@@ -29,9 +29,9 @@ Ezek után ha rákérdezünk az alábbiakra:
 
 Parancs                       | Eredmény		| Magyarázat
 :---------------------------- | :-------------	| :-------------
-_?- esik._                    | `true`			| definiálva van, tehát igaz
-_?- erik_okos._               | `true`			| definiálva van, tehát igaz
-_?- john_elorelato._          | `error`			| nincs definiálva, a prolog nem találja, ezért hibát dob
+`?- esik.`                    | `true`			| definiálva van, tehát igaz
+`?- erik_okos.`               | `true`			| definiálva van, tehát igaz
+`?- john_elorelato.`          | `error`			| nincs definiálva, a prolog nem találja, ezért hibát dob
 
 
 ### b) Predikátumok relációkkal:
@@ -51,10 +51,10 @@ Ezek után, ha megkérdezzük a prologot:
 
 Parancs                       | Eredmény		| Magyarázat
 :---------------------------- | :-------------	| :-------------
-_?- kedveli(john,mary)._      | `true`			| van találat
-_?- kedveli(mary,john)._      | `false`			| a reláció ebbe az irányba nem volt definiálva
-_?- eszik(jani,alma)._        | `true`			| van találat
-_?- eszik(mary,korte)._       | `false`			| nincs definiálva
+`?- kedveli(john,mary).`      | `true`			| van találat
+`?- kedveli(mary,john).`      | `false`			| a reláció ebbe az irányba nem volt definiálva
+`?- eszik(jani,alma).`        | `true`			| van találat
+`?- eszik(mary,korte).`       | `false`			| nincs definiálva
 
 ## 2) Változók alkalmazása
 
@@ -70,7 +70,7 @@ Példa:
 
 Parancs                       | Változó			| Eredmény			| Magyarázat
 :---------------------------- | :-------------	| :-------------	| :-------------
-_?-` `eszik(fred,Mit)._         | `Mit=alma`      | `true`			| A _Mit_ változó(k)ba a prolog behelyettesíti a predikátumban megadott értéke(ke)t, ha talál
+`?- eszik(fred,Mit).`         | _Mit=alma_      | `true`			| A _Mit_ változó(k)ba a prolog behelyettesíti a predikátumban megadott értéke(ke)t, ha talál
 
 
 A változókra az alábbi szabályok érvényesek:
@@ -90,7 +90,7 @@ utazik(feri,kocsival).
 
 Parancs                       | Változó			| Eredmény			| Magyarázat
 :---------------------------- | :-------------	| :-------------	| :-------------
-_?- szereti(jani,Kit)._       | `Kit=marcsi`    | `true`			| van találat (igazzal tér vissza), a változóba kerül a megfelelõ érték
-_?- szereti(marcsi,Kit)._     |                 | `false`			| marcsira nem definiáltunk predkátumot, ezért a lekérdezés hamissal tér vissza
-_?- eszik(marcsi,Mit)._       |                 | `false`			| nincs definiálva a predikátum, hamissal tér vissza
-_?- utazik(feri,Mivel)._      | `Mivel=busszal`; `Mivel=kocsival`| `true`			| van találat, több is, a változóba több érték is bekerül
+`?- szereti(jani,Kit).`       | _Kit=marcsi_    | `true`			| van találat (igazzal tér vissza), a változóba kerül a megfelelõ érték
+`?- szereti(marcsi,Kit).`     |                 | `false`			| marcsira nem definiáltunk predkátumot, ezért a lekérdezés hamissal tér vissza
+`?- eszik(marcsi,Mit).`       |                 | `false`			| nincs definiálva a predikátum, hamissal tér vissza
+`?- utazik(feri,Mivel).`      | _Mivel=busszal_; _Mivel=kocsival_| `true`			| van találat, több is, a változóba több érték is bekerül
