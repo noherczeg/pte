@@ -6,7 +6,7 @@
 (Tamsin Treasure-Jones)[http://www.doc.gold.ac.uk/~mas02gw/prolog_tutorial/prologpages/]
 (J.R.Fisher)[http://www.csupomona.edu/~jrfisher/www/prolog_tutorial/contents.html]
 
-# 1) Tények
+## 1) Tények
 
 Prologban kétféle képpen tudunk tényeket megfogalmazni: konkrét értékekkel, vagy relációkkal.
 
@@ -26,7 +26,7 @@ _:- erik_okos._               | `true`			| definiálva van, tehát igaz
 _:- john_elorelato._          | `error`			| nincs definiálva, a prolog nem találja, ezért hibát dob
 
 
-### a) Tények relációkkal:
+### b) Tények relációkkal:
 
 A relációkra az alábbi szabályok érvényesek:
 
