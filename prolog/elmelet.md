@@ -27,7 +27,7 @@ erik_okos.
 
 Ezek után ha rákérdezünk az alábbiakra:
 
-Parancs                       | Válasz			| Magyarázat
+Parancs                       | Eredmény		| Magyarázat
 :---------------------------- | :-------------	| :-------------
 _:- esik._                    | `true`			| definiálva van, tehát igaz
 _:- erik_okos._               | `true`			| definiálva van, tehát igaz
@@ -49,7 +49,7 @@ eszik(feri,narancs).
 
 Ezek után, ha megkérdezzük a prologot:
 
-Parancs                       | Válasz			| Magyarázat
+Parancs                       | Eredmény		| Magyarázat
 :---------------------------- | :-------------	| :-------------
 _:- kedveli(john,mary)._      | `true`			| van találat
 _:- kedveli(mary,john)._      | `false`			| a reláció ebbe az irányba nem volt definiálva
@@ -68,9 +68,9 @@ Hogyan kérdezzük azt le, hogy mit eszik feri? Változó segítségével!
 
 Példa:
 
-Parancs                       | Válasz			| Magyarázat
-:---------------------------- | :-------------	| :-------------
-_:- eszik(fred,Mit)._         | `Mit=alma`      | A _Mit_ változóba a prolog behelyettesíti a predikátumban megadott értéke(ke)t
+Parancs                       | Válasz			| Eredmény			| Magyarázat
+:---------------------------- | :-------------	| :-------------	| :-------------
+_:- eszik(fred,Mit)._         | `Mit=alma`      | `true`			| A _Mit_ változó(k)ba a prolog behelyettesíti a predikátumban megadott értéke(ke)t, ha talál
 
 
 A változókra az alábbi szabályok érvényesek:
@@ -88,9 +88,9 @@ utazik(feri,busszal).
 utazik(feri,kocsival).
 ```
 
-Parancs                       | Válasz			| Magyarázat
-:---------------------------- | :-------------	| :-------------
-_:- szereti(jani,Kit)._       | `Kit=marcsi`    | van találat
-_:- szereti(marcsi,Kit)._     | `false`         | a reláció ebbe az irányba nem volt definiálva
-_:- eszik(marcsi,Mit)._       | `false`         | nincs definiálva
-_:- utazik(feri,Mivel)._      | `Mivel=busszal`, `Mivel=kocsival`| van találat
+Parancs                       | Válasz			| Eredmény			| Magyarázat
+:---------------------------- | :-------------	| :-------------	| :-------------
+_:- szereti(jani,Kit)._       | `Kit=marcsi`    | `true`			| van találat (igazzal tér vissza), a változóba kerül a megfelelõ érték
+_:- szereti(marcsi,Kit)._     | `false`         | `false`			| marcsira nem definiáltunk predkátumot, ezért a lekérdezés hamissal tér vissza
+_:- eszik(marcsi,Mit)._       | `false`         | `false`			| nincs definiálva a predikátum, hamissal tér vissza
+_:- utazik(feri,Mivel)._      | `Mivel=busszal`, `Mivel=kocsival`| `true`			| van találat, több is, a változóba több érték is bekerül
